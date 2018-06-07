@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="container underNavbar">
+    <div *ngIf="allUsersList" class="jumbotron" style="width: 1100px">
+      <app-user-selection-table (userSelectionEvent)="getSelectedUserData()"></app-user-selection-table>
+    </div>
+  </div>
+  <div *ngIf="userData" class="container">
+    <div class="jumbotron" style="width: 1100px">
+      <div class="row " style="padding-bottom: 30px">
+        <h1 *ngIf="userData" style="color: #1f37b8">{{userData.firstName}} {{userData.lastName}}
+          <!--({{userData.airport.airportICAO}})</h1>-->
+        </h1>
+      </div>
+      <div class="row" style="padding-bottom: 20px">
+        <div class="col">
+          <h4>ID KONTROLERA:</h4>
+          <p *ngIf="userData" class="persData">{{userData.id}}</p>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom: 20px">
+        <div class="col">
+          <h4>PESEL:</h4>
+          <p *ngIf="userData" class="persData">{{userData.pesel}}</p>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom: 20px">
+        <div class="col">
+          <h4>IMIĘ OJCA:</h4>
+          <p *ngIf="userData" class="persData">{{userData.fathersName}}</p>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom: 20px">
+        <div class="col">
+          <h4>DATA URODZENIA:</h4>
+          <p *ngIf="userData" class="persData">{{userData.birthDate}}</p>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom: 20px">
+        <div class="col">
+          <h4>MIEJSCE URODZENIA:</h4>
+          <p *ngIf="userData" class="persData">{{userData.birthPlace.toUpperCase()}}</p>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom: 20px">
+        <div class="col">
+          <h4>DATA WSTĄPIENIA:</h4>
+          <p *ngIf="userData" class="persData">{{userData.entryDate}}</p>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom: 20px">
+        <div class="col">
+          <h4>NUMER JW:</h4>
+          <p *ngIf="userData" class="persData">{{userData.milBaseNr}}</p>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom: 20px">
+        <div class="col">
+          <h4>NAZWA JW:</h4>
+          <p *ngIf="userData" class="persData">{{userData.milBaseName}}</p>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom: 20px">
+        <div class="col">
+          <h4>NIS:</h4>
+          <p *ngIf="userData" class="persData">{{userData.nis}}</p>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom: 20px">
+        <div class="col">
+          <h4>STANOWISKO:</h4>
+          <p *ngIf="userData" class="persData">{{userData.role}}</p>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom: 20px">
+      <div class="col">
+        <h4>KADENCJA NA STANOWISKU:</h4>
+        <p *ngIf="userData" class="persData">{{userData.officeTerm | date: 'dd/MM/yyyy'}}</p>
+      </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

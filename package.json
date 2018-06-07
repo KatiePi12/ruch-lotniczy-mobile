@@ -30,10 +30,13 @@
     "ionicons": "3.0.0",
     "rxjs": "5.5.10",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.26"
+    "zone.js": "0.8.26",
+    "angular-4-data-table-bootstrap-4": "latest",
+    "@ng-bootstrap/ng-bootstrap": "latest",
+    "angular5-data-table": "latest"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.1.9",
+    "@ionic/app-scripts": "^3.1.9",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project"
