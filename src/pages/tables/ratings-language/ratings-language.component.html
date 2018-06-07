@@ -1,0 +1,30 @@
+<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">
+  <data-table id="ratingsTable"
+              headerTitle="Uprawnienia Językowe"
+              [items]="items"
+              [itemCount]="itemCount"
+              (reload)="reloadItems($event)"
+              [pagination]="false"
+
+  >
+    <data-table-column
+      [property]="'language'"
+      [header]="'Rodzaj'">
+    </data-table-column>
+    <data-table-column
+      [property]="'level'"
+      [header]="'Poziom'">
+    </data-table-column>
+    <data-table-column
+      [property]="'expireDate'"
+      [header]="'Ważne do'">
+      <ng-template #dataTableCell let-item="item">
+        <span>{{item.expireDate | date:'dd/MM/yyyy'}}</span>
+      </ng-template>
+    </data-table-column>
+    <data-table-column
+      property="legalBasis"
+      header="Podstawa">
+    </data-table-column>
+  </data-table>
+</div>

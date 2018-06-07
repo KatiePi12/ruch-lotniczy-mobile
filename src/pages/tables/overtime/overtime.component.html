@@ -1,0 +1,45 @@
+<div *ngIf="items" style=" max-width: 1000px; position:relative; z-index: 1 !important;">
+  <data-table
+    headerTitle="Nadgodziny"
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItems($event)"
+    [pagination]="false"
+    [selectColumn]="false"
+    [multiSelect]="false"
+    [indexColumn]="false"
+  >
+    <data-table-column
+      [property]="'id'"
+      [header]="'ID'"
+      width="100px">
+    </data-table-column>
+    <data-table-column
+      [property]="'militaryRank'"
+      [header]="'Stopień'"
+      width="100px">
+    </data-table-column>
+    <data-table-column
+      [property]="'firstName'"
+      [header]="'Imię'"
+      width="150px">
+    </data-table-column>
+    <data-table-column
+      [property]="'lastName'"
+      [header]="'Nazwisko'">
+    </data-table-column>
+    <data-table-column
+      property="role"
+      header="Stanowisko"
+      width="300px">
+    </data-table-column>
+    <data-table-column
+      property="overtimeHours"
+      header="Nadgodziny"
+      width="130px">
+      <ng-template #dataTableCell let-item="item">
+        <input type="number" [(ngModel)]="item.overtimeHours" class="form-control input-sm" style="width: 80px"/>
+      </ng-template>
+    </data-table-column>
+  </data-table>
+</div>

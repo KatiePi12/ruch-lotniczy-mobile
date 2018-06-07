@@ -1,0 +1,45 @@
+<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">
+  <data-table id="ratingsTable"
+              headerTitle="Uprawnienia Językowe"
+              [items]="items"
+              [itemCount]="itemCount"
+              (reload)="reloadItems($event)"
+              [pagination]="false"
+
+  >
+    <data-table-column
+      [property]="'language'"
+      [header]="'Rodzaj'">
+    </data-table-column>
+    <data-table-column
+      [property]="'level'"
+      [header]="'Poziom'">
+      <ng-template #dataTableCell let-item="item">
+        <select class="form-control" [(ngModel)]="item.level" style="width: 90px">
+          <option *ngFor="let lvl of levelNames" [value]="lvl">{{lvl}}</option>
+        </select>
+      </ng-template>
+    </data-table-column>
+    <data-table-column
+      [property]="'expireDate'"
+      [header]="'Ważne do'">
+      <ng-template #dataTableCell let-item="item">
+        <span>{{item.expireDate | date:'dd/MM/yyyy'}}</span>
+      </ng-template>
+    </data-table-column>
+    <data-table-column
+      property="legalBasis"
+      header="Podstawa"
+      width="300px">
+      <ng-template #dataTableCell let-item="item">
+        <input type="text" [(ngModel)]="item.legalBasis" class="form-control input-sm" style="width: 260px"/>
+      </ng-template>
+    </data-table-column>
+  </data-table>
+  <div style="position:relative; top:50%; left:40%;">
+    <span style="width: 224px">Ważne do</span>
+  </div>
+  <div style="position:relative; top:50%; left:40%;">
+    <ngb-datepicker #dpexpire [ngModel]="expireDateModel" (ngModelChange)="expireDateChanged($event)"></ngb-datepicker>
+  </div>
+</div>

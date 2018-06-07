@@ -1,0 +1,41 @@
+<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">
+  <data-table id="usersTable"
+              headerTitle="Personel "
+              [items]="items"
+              [itemCount]="itemCount"
+              [pagination]="false"
+              (reload)="reloadItems($event)"
+  >
+    <data-table-column
+      [property]="'id'"
+      [header]="'ID'"
+      width="100px">
+    </data-table-column>
+    <data-table-column
+      [property]="'firstName'"
+      [header]="'Imię'"
+      width="150px">
+    </data-table-column>
+    <data-table-column
+      [property]="'lastName'"
+      [header]="'Nazwisko'"
+      [sortable]=true>
+    </data-table-column>
+    <data-table-column
+      [property]="'realWorkingHours'"
+      [header]="'Rzeczywisty czas pracy [h]'"
+      [sortable]=true>
+    </data-table-column>
+    <data-table-column
+      [property]="'absencesHours'"
+      [header]="'Nieobecności + początkowe wartości nadgodzin [h]'"
+      [sortable]=true>
+    </data-table-column>
+    <data-table-column
+      [property]="'overtimeHours'"
+      [header]="'Nadgodziny'"
+      [sortable]=true>
+    </data-table-column>
+
+  </data-table>
+</div>

@@ -1,0 +1,39 @@
+<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">
+  <data-table id="ratingsTable"
+              headerTitle="Uprawnienia z datą ważności"
+              [items]="items"
+              [itemCount]="itemCount"
+              (reload)="reloadItems($event)"
+              [pagination]="false"
+
+  >
+    <data-table-column
+      [property]="'airportICAO'"
+      [header]="'Organ'">
+    </data-table-column>
+    <data-table-column
+      [property]="'name'"
+      [header]="'Nazwa'">
+    </data-table-column>
+    <data-table-column
+      [property]="'expireDate'"
+      [header]="'Ważne do'">
+      <ng-template #dataTableCell let-item="item">
+        <span>{{item.expireDate | date:'dd/MM/yyyy'}}</span>
+      </ng-template>
+    </data-table-column>
+    <data-table-column
+      property="legalBasis"
+      header="Podstawa"
+    width="250px">
+    </data-table-column>
+    <data-table-column
+      [property]="'otp'"
+      [header]="'OTP'">
+      <ng-template #dataTableCell let-item="item">
+        <span>{{item.otp | date:'dd/MM/yyyy'}}</span>
+      </ng-template>
+    </data-table-column>
+
+  </data-table>
+</div>

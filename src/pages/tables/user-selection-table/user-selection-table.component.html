@@ -1,0 +1,37 @@
+<!--<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">-->
+<div>
+  <data-table id="usersTable"
+              headerTitle="Personel "
+              [items]="items"
+              [itemCount]="itemCount"
+              (reload)="reloadItems($event)"
+              [pagination]="false"
+              (rowClick)="rowClick($event)"
+  >
+    <data-table-column
+      [property]="'id'"
+      [header]="'ID'"
+      width="100px">
+    </data-table-column>
+    <data-table-column
+      [property]="'militaryRank'"
+      [header]="'Stopień'"
+      width="100px">
+    </data-table-column>
+    <data-table-column
+      [property]="'firstName'"
+      [header]="'Imię'"
+      width="150px">
+    </data-table-column>
+    <data-table-column
+      [property]="'lastName'"
+      [header]="'Nazwisko'">
+    </data-table-column>
+    <data-table-column
+      property="role"
+      header="Stanowisko"
+      width="300px">
+    </data-table-column>
+
+  </data-table>
+</div>

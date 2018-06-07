@@ -1,0 +1,50 @@
+<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">
+  <data-table id="ratingsTable"
+              headerTitle="Uprawnienia"
+              [items]="items"
+              [itemCount]="itemCount"
+              (reload)="reloadItems($event)"
+              [pagination]="false"
+
+  >
+    <data-table-column
+      [property]="'name'"
+      [header]="'Nazwa'"
+      [sortable]="false"
+      [resizable]="false">
+      <ng-template #dataTableCell let-item="item">
+        <select class="form-control" required [(ngModel)]="item.name" style="width: 90px">
+          <option *ngFor="let ratingName of ratingNames" [value]="ratingName">{{ratingName}}</option>
+        </select>
+      </ng-template>
+    </data-table-column>
+    <data-table-column
+      [property]="'releaseDate'"
+      [header]="'Data wydania'">
+      <ng-template #dataTableCell let-item="item">
+        <input type="text" [(ngModel)]="item.releaseDate" class="form-control input-sm" style="width: 120px"/>
+      </ng-template>
+    </data-table-column>
+    <data-table-column
+      property="legalBasis"
+      header="Podstawa"
+      width="300px">
+      <ng-template #dataTableCell let-item="item">
+        <input type="text" [(ngModel)]="item.legalBasis" class="form-control input-sm" style="width: 200px"/>
+      </ng-template>
+    </data-table-column>
+    <data-table-column>
+      width="60px"
+      header="Actions">
+      <ng-template #dataTableHeader let-item="item">
+        <i>Akcje</i>
+      </ng-template>
+      <ng-template #dataTableCell let-item="item">
+        <button (click)="deleteAction(item)" class="btn btn-sm btn-outline-danger">Usuń</button>
+      </ng-template>
+    </data-table-column>
+  </data-table>
+  <button type="button" class="btn btn-outline-success" (click)="addRowAction()"
+          style="position:relative; top:50%; left:80%;">Dodaj Uprawnienie
+  </button>
+</div>

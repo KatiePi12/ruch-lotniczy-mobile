@@ -1,0 +1,77 @@
+<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px; position:relative; z-index: 1 !important;">
+  <data-table
+    headerTitle="Uprawnienia z datą ważności"
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItems($event)"
+    [pagination]="false"
+    [selectColumn]="true"
+    [multiSelect]="true"
+    [indexColumn]="false"
+  >
+    <data-table-column
+      [property]="'airportICAO'"
+      [header]="'Organ'"
+      [sortable]="false"
+      [resizable]="false">
+      <ng-template #dataTableCell let-item="item">
+        <select class="form-control" [(ngModel)]="item.airportICAO" style="width: 90px">
+          <option *ngFor="let icao of airportICAOs" [value]="icao">{{icao}}</option>
+        </select>
+      </ng-template>
+    </data-table-column>
+    <data-table-column
+      [property]="'name'"
+      [header]="'Nazwa'">
+      <ng-template #dataTableCell let-item="item">
+        <select class="form-control" required [(ngModel)]="item.name" style="width: 100px">
+          <option *ngFor="let ratingName of ratingNames" [value]="ratingName">{{ratingName}}</option>
+        </select>
+      </ng-template>
+    </data-table-column>
+    <data-table-column
+      [property]="'expireDate'"
+      [header]="'Ważne do'"
+      width="100px">
+      <ng-template #dataTableCell let-item="item">
+        <span>{{item.expireDate | date:'dd/MM/yyyy'}}</span>
+      </ng-template>
+    </data-table-column>
+    <data-table-column
+      property="legalBasis"
+      header="Podstawa"
+      width="260px">
+      <ng-template #dataTableCell let-item="item">
+        <input type="text" [(ngModel)]="item.legalBasis" class="form-control input-sm" style="width: 200px"/>
+      </ng-template>
+    </data-table-column>
+    <data-table-column
+      [property]="'otp'"
+      [header]="'OTP'">
+      <ng-template #dataTableCell let-item="item">
+        <span>{{item.otp | date:'dd/MM/yyyy'}}</span>
+      </ng-template>
+    </data-table-column>
+    <data-table-column>
+      width="60px"
+      header="Actions">
+      <ng-template #dataTableHeader let-item="item">
+        <i>Akcje</i>
+      </ng-template>
+      <ng-template #dataTableCell let-item="item">
+        <button (click)="deleteAction(item)" class="btn btn-sm btn-outline-danger">Usuń</button>
+      </ng-template>
+    </data-table-column>
+  </data-table>
+  <button type="button" class="btn btn-outline-success" (click)="addRowAction()"
+          style="position:relative; top:50%; left:80%;">Dodaj Uprawnienie
+  </button>
+  <div class="centered" style="padding: 20px 150px 10px 150px">
+    <span style="width: 224px">Ważne do</span>
+    <span style="width: 224px">OTP</span>
+  </div>
+  <div class="centered" style="padding: 0px 150px 0px 150px">
+    <ngb-datepicker #dpexpire [ngModel]="expireDateModel" (ngModelChange)="expireDateChanged($event)"></ngb-datepicker>
+    <ngb-datepicker #dpotp [ngModel]="otpDateModel" (ngModelChange)="otpDateChanged($event)"></ngb-datepicker>
+  </div>
+</div>
