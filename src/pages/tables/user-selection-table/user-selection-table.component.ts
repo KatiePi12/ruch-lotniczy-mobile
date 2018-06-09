@@ -17,6 +17,7 @@ export class UserSelectionTableComponent implements OnInit {
   currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
   simpleUsersList = JSON.parse(localStorage.getItem('simpleUsersList'));
   itemResource = new DataTableResource(this.simpleUsersList);
+  itemResource1 = this.simpleUsersList;
   items = [];
   itemCount = 0;
 
@@ -33,8 +34,9 @@ export class UserSelectionTableComponent implements OnInit {
     this.itemResource.query(params).then(items => this.items = items);
   }
 
-  rowClick(event) {
-    localStorage.setItem('selectedUserID', event.row.item.id);
+  rowClick(itemId) {
+    // localStorage.setItem('selectedUserID', event.row.item.id);
+    localStorage.setItem('selectedUserID', itemId);
 
     RatingsTableComponent.updateUserStatus.next(true);
     RatingsEndorsementsComponent.updateUserStatus.next(true);

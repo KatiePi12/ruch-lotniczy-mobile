@@ -1,36 +1,71 @@
 <!--<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">-->
 <!--<div  style="font-size: 22px; table-layout: auto">-->
 <div style="font-size: 22px;" >
-  <data-table id="usersTable"
-              headerTitle="Personel"
-              [items]="items"
-              [itemCount]="itemCount"
-              (reload)="reloadItems($event)"
-              [pagination]="false"
-              (rowClick)="rowClick($event)"
+  <p> Personel </p>
+  <table datatable id="usersTable"
+         (reload)="reloadItems($event)"
   >
-    <data-table-column
-      [property]="'id'"
-      [header]="'ID'">
-    </data-table-column>
-    <!--<data-table-column-->
-      <!--[property]="'militaryRank'"-->
-      <!--[header]="'Stopień'"-->
-      <!--width="100px">-->
-    <!--</data-table-column>-->
-    <data-table-column
-      [property]="'firstName'"
-      [header]="'Imię'">
-    </data-table-column>
-    <data-table-column
-      [property]="'lastName'"
-      [header]="'Nazwisko'">
-    </data-table-column>
-    <!--<data-table-column-->
-      <!--property="role"-->
-      <!--header="Stanowisko"-->
-      <!--width="300px">-->
-    <!--</data-table-column>-->
-
-  </data-table>
+    <tr>
+      <ion-slides>
+        <ion-slide>
+          <th>ID</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <tr *ngFor="let item of itemResource1" (click)="rowClick(item.id)">
+            <td>{{ item.id }}</td>
+            <td>{{ item.firstName }}</td>
+            <td>{{ item.lastName }}</td>
+          </tr>
+        </ion-slide>
+        <ion-slide>
+          <th>Stopień</th>
+          <th>Stanowisko</th>
+          <tr *ngFor="let person of itemResource1">
+            <td>{{ person.militaryRank }}</td>
+            <td>{{ person.role }}</td>
+          </tr>
+        </ion-slide>
+      </ion-slides>
+    </tr>
+  </table>
 </div>
+
+<!--<data-table  id="usersTable"-->
+<!--header-title="sdfdsx"-->
+<!--[items]="items"-->
+<!--[itemCount]="itemCount"-->
+<!--(reload)="reloadItems($event)"-->
+<!--[pagination]="false"-->
+<!--(rowClick)="rowClick($event)">-->
+<!--&gt;-->
+<!--<ion-slides>-->
+<!--<ion-slide>-->
+<!--<data-table-column-->
+<!--[property]="'id'"-->
+<!--[header]="'ID'">-->
+<!--</data-table-column>-->
+<!--</ion-slide>-->
+<!--<ion-slide>-->
+<!--<data-table-column-->
+<!--[property]="'firstName'"-->
+<!--[header]="'Imię'">-->
+<!--</data-table-column>-->
+<!--<data-table-column-->
+<!--[property]="'lastName'"-->
+<!--[header]="'Nazwisko'">-->
+<!--</data-table-column>-->
+<!--</ion-slide>-->
+<!--</ion-slides>-->
+
+
+<!--<data-table-column-->
+<!--[property]="'militaryRank'"-->
+<!--[header]="'Stopień'"-->
+<!--width="100px">-->
+<!--</data-table-column>-->
+<!--<data-table-column-->
+<!--property="role"-->
+<!--header="Stanowisko"-->
+<!--width="300px">-->
+<!--</data-table-column>-->
+<!--</data-table>-->
