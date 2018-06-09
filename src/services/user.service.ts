@@ -5,8 +5,8 @@ import {User} from '../models/user';
 
 @Injectable()
 export class UserService {
-  BASE_URL = 'https://ruchlotniczy-app.unicloud.pl/';
-
+ // BASE_URL = 'https://ruchlotniczy-app.unicloud.pl/';
+  BASE_URL = 'http://localhost:8080';
   constructor(private http: Http) {
   }
 
@@ -16,7 +16,8 @@ export class UserService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     // headers.append('Bearer', currentUser.token);
-    headers.append('Bearer',     "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6Ymlnbmlldy5zYWwifQ.oRJe_nCHd7GVgYcyQkAHYRJin5rmbjOoxCZ6cgM5T7SFnnPfy6aDWE6ExCg__9kZmapXjl6fiVBGNl3rVKhAFQ")
+    headers.append('Bearer',     "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6Ymlnbmlldy5zYWwifQ.Vt-8LJAdUgKgeEljq4GPs8visrwuzfsT1cWIeK4MDovbvUXpYvifvjgIS9RPiHeUaE9PvZ0nWUznYimHhbnSuw"
+    )
     return this.http.get(url, {headers: headers})
       .map(response => response.json());
   }
@@ -27,7 +28,7 @@ export class UserService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     // headers.append('Bearer', currentUser.token);
-    headers.append('Bearer',     "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6Ymlnbmlldy5zYWwifQ.oRJe_nCHd7GVgYcyQkAHYRJin5rmbjOoxCZ6cgM5T7SFnnPfy6aDWE6ExCg__9kZmapXjl6fiVBGNl3rVKhAFQ"
+    headers.append('Bearer',     "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6Ymlnbmlldy5zYWwifQ.Vt-8LJAdUgKgeEljq4GPs8visrwuzfsT1cWIeK4MDovbvUXpYvifvjgIS9RPiHeUaE9PvZ0nWUznYimHhbnSuw"
     );
     return this.http.get(url, {headers: headers})
       .map(response => response.json());

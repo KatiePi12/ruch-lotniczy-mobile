@@ -16,6 +16,10 @@ import {HttpModule} from "@angular/http";
 import {UserSelectionTableComponent} from "../pages/tables/user-selection-table/user-selection-table.component";
 // import {DataTableResource} from "angular-4-data-table-bootstrap-4";
 import {DataTableModule} from 'angular5-data-table';
+import {RatingsTableComponent} from "../pages/tables/ratings-table/ratings-table.component";
+import {RatingsEndorsementsComponent} from "../pages/tables/ratings-endorsements/ratings-endorsements.component";
+import {RatingsWExpireComponent} from "../pages/tables/ratings-wexpire/ratings-wexpire.component";
+import {RatingsLanguageComponent} from "../pages/tables/ratings-language/ratings-language.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import {DataTableModule} from 'angular5-data-table';
     Calendar,
     HomePage,
     TabsPage,
-    UserSelectionTableComponent
+    UserSelectionTableComponent,
+    RatingsTableComponent,
+    RatingsEndorsementsComponent,
+    RatingsWExpireComponent,
+    RatingsLanguageComponent
   ],
   imports: [
     BrowserModule,

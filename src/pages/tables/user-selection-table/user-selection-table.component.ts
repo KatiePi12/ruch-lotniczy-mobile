@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {DataTableResource} from 'angular-4-data-table-bootstrap-4';
+//import {DataTableResource} from 'angular-4-data-table-bootstrap-4';
+import {DataTableResource} from "angular5-data-table";
 import {User} from '../../../models/user';
 import {RatingsTableComponent} from '../ratings-table/ratings-table.component';
 import {RatingsEndorsementsComponent} from '../ratings-endorsements/ratings-endorsements.component';

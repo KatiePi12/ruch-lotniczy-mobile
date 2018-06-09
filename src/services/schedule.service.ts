@@ -5,8 +5,8 @@ import {UserAuthResponse} from '../models/user-auth-response';
 
 @Injectable()
 export class ScheduleService {
-  // BASE_URL = 'http://localhost:8080/schedule';
-  BASE_URL = 'https://ruchlotniczy-app.unicloud.pl/schedule';
+  BASE_URL = 'http://localhost:8080/schedule';
+  //BASE_URL = 'https://ruchlotniczy-app.unicloud.pl/schedule';
 
   constructor(private http: Http) {
   }

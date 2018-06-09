@@ -5,11 +5,15 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="container underNavbar">
-    <div *ngIf="allUsersList" class="jumbotron" style="width: 1100px">
-      <app-user-selection-table (userSelectionEvent)="getSelectedUserData()"></app-user-selection-table>
-    </div>
-  </div>
+  <!--<div *ngIf="allUsersList" class="jumbotron" style="width: 1100px">-->
+  <ion-col *ngIf="userData" class="container">
+    <!--<ion-row class="jumbotron" style="width: 1100px">-->
+    <ion-row>
+      <div *ngIf="allUsersList">
+        <app-user-selection-table (userSelectionEvent)="getSelectedUserData()"></app-user-selection-table>
+      </div>
+      </ion-row>
+  </ion-col>
   <div *ngIf="userData" class="container">
     <div class="jumbotron" style="width: 1100px">
       <div class="row " style="padding-bottom: 30px">
@@ -85,4 +89,84 @@
       </div>
     </div>
   </div>
+  <div *ngIf="userData" class="container ">
+    <ion-slides>
+      <ion-slide>
+        <img *ngIf="userData.officeTerm > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
+        <img *ngIf="userData.officeTerm > CURRENT_TIME && userData.officeTerm < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
+        <img *ngIf="userData.officeTerm < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
+        <p >Kadencja na stanowisku</p>
+        <p>{{userData.officeTerm | date: 'dd/MM/yyyy'}}</p>
+      </ion-slide>
+      <ion-slide>
+        <img *ngIf="userData.licenceExpireDate > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
+        <img *ngIf="userData.licenceExpireDate > CURRENT_TIME && userData.licenceExpireDate < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
+        <img *ngIf="userData.licenceExpireDate < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
+        <p >Ważność licencji</p>
+        <p>{{userData.licenceExpireDate | date: 'dd/MM/yyyy'}}</p>
+      </ion-slide>
+      <ion-slide>
+        <img *ngIf="getMinValueOfExpireDate() > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
+        <img *ngIf="getMinValueOfExpireDate() > CURRENT_TIME && getMinValueOfExpireDate() < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
+        <img *ngIf="getMinValueOfExpireDate() < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
+        <p >Uprawnienia z datą ważności</p>
+        <p>{{getMinValueOfExpireDate() | date: 'dd/MM/yyyy'}}</p>
+      </ion-slide>
+      <ion-slide>
+        <img *ngIf="getMinValueOfLanguage() > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
+        <img *ngIf="getMinValueOfLanguage() > CURRENT_TIME && getMinValueOfLanguage() < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
+        <img *ngIf="getMinValueOfLanguage() < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
+        <p >Uprawnienia językowe</p>
+        <p>{{getMinValueOfLanguage() | date: 'dd/MM/yyyy'}}</p>
+      </ion-slide>
+      <ion-slide>
+        <img *ngIf="getMinValueOfOtp() > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
+        <img *ngIf="getMinValueOfOtp() > CURRENT_TIME && getMinValueOfOtp() < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
+        <img *ngIf="getMinValueOfOtp() < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
+        <p >OTP</p>
+        <p>{{getMinValueOfOtp() | date: 'dd/MM/yyyy'}}</p>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <ion-col *ngIf="userData" class="container">
+    <!--<ion-row class="jumbotron" style="width: 1100px">-->
+    <ion-row>
+      <h3 style="padding-bottom: 20px">UPRAWNIENIA KONTROLERA RUCHU LOTNICZEGO</h3>
+      <ion-slides>
+        <ion-slide>
+          <ion-col>
+            <h4>Numer licencji: </h4>
+          </ion-col>
+          <ion-col>
+            <p *ngIf="userData" class="persData">{{userData.licenceId}}</p>
+          </ion-col>
+        </ion-slide>
+        <ion-slide>
+          <ion-col>
+            <h4>Typ licencji: </h4>
+          </ion-col>
+          <ion-col>
+            <p *ngIf="userData" class="persData">{{userData.licenceType}}</p>
+          </ion-col>
+        </ion-slide>
+        <ion-slide>
+          <ion-col>
+            <h4>Data ważności licencji: </h4>
+          </ion-col>
+          <ion-col>
+            <p *ngIf="userData" class="persData">{{userData.licenceExpireDate | date: 'dd/MM/yyyy'}}</p>
+          </ion-col>
+        </ion-slide>
+      </ion-slides>
+      <app-ratings-table></app-ratings-table>
+      <app-ratings-endorsements></app-ratings-endorsements>
+      <app-ratings-wexpire></app-ratings-wexpire>
+      <app-ratings-language></app-ratings-language>
+    </ion-row>
+    <div class="jumbotron" style="width: 1100px;">
+      <button type="button" class="btn btn-primary" routerLink='/homeDWEdit'
+              style="position:relative; top:50%; left:45%;">Edytuj
+      </button>
+    </div>
+  </ion-col>
 </ion-content>

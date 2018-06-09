@@ -11,8 +11,8 @@ export class AuthService {
   }
 
   public loginAction(userCredentials: UserLoginCredentials) {
-    // const url = 'http://localhost:8080/auth';
-    const url = 'https://ruchlotniczy-app.unicloud.pl/auth';
+    const url = 'http://localhost:8080/auth';
+    //const url = 'https://ruchlotniczy-app.unicloud.pl/auth';
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     const loginData = {
