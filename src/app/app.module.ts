@@ -23,6 +23,16 @@ import {RatingsLanguageComponent} from "../pages/tables/ratings-language/ratings
 import {LoginComponent} from "../pages/login/login.component";
 import {HomeComponent} from "../pages/home/home.component";
 import {TabsPageKont} from "../pages/tab-kont/tabs-kont";
+import {HarmKontComponent} from "../pages/harm-kont/harm-kont.component";
+import {ScheduleSelectionComponent} from "../pages/schedule-selection/schedule-selection.component";
+import {ShowScheduleEditComponent} from "../pages/show-schedule-edit/show-schedule-edit.component";
+import {SummaryOvertimeComponent} from "../pages/tables/summary-overtime/summary-overtime.component";
+import {CalendarModule} from "angular-calendar";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import localePl from '@angular/common/locales/pl';
+import {registerLocaleData} from "@angular/common";
+
+registerLocaleData(localePl);
 
 @NgModule({
   declarations: [
@@ -37,13 +47,19 @@ import {TabsPageKont} from "../pages/tab-kont/tabs-kont";
     RatingsEndorsementsComponent,
     RatingsWExpireComponent,
     RatingsLanguageComponent,
-    HomeComponent
+    HomeComponent,
+    HarmKontComponent,
+    ScheduleSelectionComponent,
+    ShowScheduleEditComponent,
+    SummaryOvertimeComponent
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    DataTableModule
+    DataTableModule,
+    NgbModule.forRoot(),
+    CalendarModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

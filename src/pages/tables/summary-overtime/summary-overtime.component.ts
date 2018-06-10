@@ -4,7 +4,7 @@ import {DataTableResource} from 'angular-4-data-table-bootstrap-4';
 @Component({
   selector: 'app-summary-overtime',
   templateUrl: './summary-overtime.component.html',
-  styleUrls: ['./summary-overtime.component.css']
+  // styleUrls: ['./summary-overtime.component.css']
 })
 export class SummaryOvertimeComponent implements OnInit {
 
