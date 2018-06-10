@@ -1,26 +1,15 @@
-<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">
-  <data-table id="ratingsTable"
-              headerTitle="Uprawnienia Uzupełniające"
-              [items]="items"
-              [itemCount]="itemCount"
-              (reload)="reloadItems($event)"
-              [pagination]="false"
-
+<div>
+  <p style="font-size: 22px;"> Uprawnienia Uzupełniające </p>
+  <table style="font-size: 18px;"
+         datatable id="ratingsTable"
   >
-    <data-table-column
-      [property]="'name'"
-      [header]="'Nazwa'"
-      [sortable]="false"
-      [resizable]="false">
-    </data-table-column>
-    <data-table-column
-      [property]="'releaseDate'"
-      [header]="'Data wydania'">
-    </data-table-column>
-    <data-table-column
-      property="legalBasis"
-      header="Podstawa"
-      width="400px">
-    </data-table-column>
-  </data-table>
+    <th>Nazwa</th>
+    <th>Data wydania</th>
+    <th>Podstawa</th>
+    <tr *ngFor="let item of itemResource">
+      <td>{{ item.name }}</td>
+      <td>{{ item.releaseDate }}</td>
+      <td>{{ item.lastName }}</td>
+    </tr>
+  </table>
 </div>

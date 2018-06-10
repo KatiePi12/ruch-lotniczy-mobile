@@ -10,27 +10,17 @@ import { Subject } from 'rxjs/Subject';
 export class RatingsWExpireComponent implements OnInit {
   public static updateUserStatus: Subject<boolean> = new Subject();
   ratingsWExpires = JSON.parse(localStorage.getItem('ratingsWExpires'));
-  itemResource = new DataTableResource(this.ratingsWExpires);
-  items = [];
-  itemCount = 0;
+  itemResource = this.ratingsWExpires;
 
   constructor() {
-    this.itemResource.count().then(count => this.itemCount = count);
     RatingsWExpireComponent.updateUserStatus.subscribe(
       res => {
         this.ratingsWExpires = JSON.parse(localStorage.getItem('ratingsWExpires'));
-        this.itemResource = new DataTableResource(this.ratingsWExpires);
-        this.itemResource.count().then(count => this.itemCount = count);
-        this.reloadItems({});
+        this.itemResource = this.ratingsWExpires;
       }
     );
   }
 
   ngOnInit(): void {
   }
-
-  reloadItems(params) {
-    this.itemResource.query(params).then(items => this.items = items);
-  }
-
 }

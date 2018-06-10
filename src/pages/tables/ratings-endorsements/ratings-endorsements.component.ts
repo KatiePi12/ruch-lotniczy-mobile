@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {DataTableResource} from 'angular-4-data-table-bootstrap-4';
 import { Subject } from 'rxjs/Subject';
 
 @Component({
@@ -10,26 +9,17 @@ import { Subject } from 'rxjs/Subject';
 export class RatingsEndorsementsComponent implements OnInit {
   public static updateUserStatus: Subject<boolean> = new Subject();
   ratingsEndorsements = JSON.parse(localStorage.getItem('ratingsEndorsements'));
-  itemResource = new DataTableResource(this.ratingsEndorsements);
-  items = [];
-  itemCount = 0;
+  itemResource = this.ratingsEndorsements;
 
   constructor() {
-    this.itemResource.count().then(count => this.itemCount = count);
     RatingsEndorsementsComponent.updateUserStatus.subscribe(
       res => {
         this.ratingsEndorsements = JSON.parse(localStorage.getItem('ratingsEndorsements'));
-        this.itemResource = new DataTableResource(this.ratingsEndorsements);
-        this.itemResource.count().then(count => this.itemCount = count);
-        this.reloadItems({});
+        this.itemResource = this.ratingsEndorsements;
       }
     );
   }
 
   ngOnInit(): void {
-  }
-
-  reloadItems(params) {
-    this.itemResource.query(params).then(items => this.items = items);
   }
 }

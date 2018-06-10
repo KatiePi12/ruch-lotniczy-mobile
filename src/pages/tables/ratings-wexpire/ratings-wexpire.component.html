@@ -1,39 +1,31 @@
-<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">
-  <data-table id="ratingsTable"
-              headerTitle="Uprawnienia z datą ważności"
-              [items]="items"
-              [itemCount]="itemCount"
-              (reload)="reloadItems($event)"
-              [pagination]="false"
-
+<!--<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">-->
+<!--<div  style="font-size: 22px; table-layout: auto">-->
+<div>
+  <p style="font-size: 22px;"> Uprawnienia z datą ważności </p>
+  <table style="font-size: 18px;"
+         datatable id="usersTable"
   >
-    <data-table-column
-      [property]="'airportICAO'"
-      [header]="'Organ'">
-    </data-table-column>
-    <data-table-column
-      [property]="'name'"
-      [header]="'Nazwa'">
-    </data-table-column>
-    <data-table-column
-      [property]="'expireDate'"
-      [header]="'Ważne do'">
-      <ng-template #dataTableCell let-item="item">
-        <span>{{item.expireDate | date:'dd/MM/yyyy'}}</span>
-      </ng-template>
-    </data-table-column>
-    <data-table-column
-      property="legalBasis"
-      header="Podstawa"
-    width="250px">
-    </data-table-column>
-    <data-table-column
-      [property]="'otp'"
-      [header]="'OTP'">
-      <ng-template #dataTableCell let-item="item">
-        <span>{{item.otp | date:'dd/MM/yyyy'}}</span>
-      </ng-template>
-    </data-table-column>
-
-  </data-table>
+    <tr>
+      <ion-slides>
+        <ion-slide>
+          <th>Organ</th>
+          <th>Nazwa</th>
+          <th>Ważne do</th>
+    <tr *ngFor="let item of itemResource" (click)="rowClick(item.id)">
+      <td>{{ item.airportICAO }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.expireDate | date:'dd/MM/yyyy' }}</td>
+    </tr>
+    </ion-slide>
+    <ion-slide>
+      <th>Podstawa</th>
+      <th>OTP</th>
+      <tr *ngFor="let person of itemResource">
+        <td>{{ person.legalBasis }}</td>
+        <td>{{ person.otp | date:'dd/MM/yyyy' }}</td>
+      </tr>
+    </ion-slide>
+    </ion-slides>
+    </tr>
+  </table>
 </div>

@@ -1,8 +1,9 @@
 <!--<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">-->
 <!--<div  style="font-size: 22px; table-layout: auto">-->
-<div style="font-size: 22px;" >
-  <p> Personel </p>
-  <table datatable id="usersTable"
+<div>
+  <p style="font-size: 22px;"> Personel </p>
+  <table style="font-size: 18px;"
+         datatable id="usersTable"
          (reload)="reloadItems($event)"
   >
     <tr>
@@ -11,7 +12,7 @@
           <th>ID</th>
           <th>First name</th>
           <th>Last name</th>
-          <tr *ngFor="let item of itemResource1" (click)="rowClick(item.id)">
+          <tr *ngFor="let item of itemResource" (click)="rowClick(item.id)">
             <td>{{ item.id }}</td>
             <td>{{ item.firstName }}</td>
             <td>{{ item.lastName }}</td>
@@ -20,7 +21,7 @@
         <ion-slide>
           <th>Stopień</th>
           <th>Stanowisko</th>
-          <tr *ngFor="let person of itemResource1">
+          <tr *ngFor="let person of itemResource">
             <td>{{ person.militaryRank }}</td>
             <td>{{ person.role }}</td>
           </tr>
@@ -29,43 +30,3 @@
     </tr>
   </table>
 </div>
-
-<!--<data-table  id="usersTable"-->
-<!--header-title="sdfdsx"-->
-<!--[items]="items"-->
-<!--[itemCount]="itemCount"-->
-<!--(reload)="reloadItems($event)"-->
-<!--[pagination]="false"-->
-<!--(rowClick)="rowClick($event)">-->
-<!--&gt;-->
-<!--<ion-slides>-->
-<!--<ion-slide>-->
-<!--<data-table-column-->
-<!--[property]="'id'"-->
-<!--[header]="'ID'">-->
-<!--</data-table-column>-->
-<!--</ion-slide>-->
-<!--<ion-slide>-->
-<!--<data-table-column-->
-<!--[property]="'firstName'"-->
-<!--[header]="'Imię'">-->
-<!--</data-table-column>-->
-<!--<data-table-column-->
-<!--[property]="'lastName'"-->
-<!--[header]="'Nazwisko'">-->
-<!--</data-table-column>-->
-<!--</ion-slide>-->
-<!--</ion-slides>-->
-
-
-<!--<data-table-column-->
-<!--[property]="'militaryRank'"-->
-<!--[header]="'Stopień'"-->
-<!--width="100px">-->
-<!--</data-table-column>-->
-<!--<data-table-column-->
-<!--property="role"-->
-<!--header="Stanowisko"-->
-<!--width="300px">-->
-<!--</data-table-column>-->
-<!--</data-table>-->

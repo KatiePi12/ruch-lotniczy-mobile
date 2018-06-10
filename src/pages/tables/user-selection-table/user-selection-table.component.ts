@@ -16,28 +16,26 @@ export class UserSelectionTableComponent implements OnInit {
   @Output() userSelectionEvent = new EventEmitter();
   currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
   simpleUsersList = JSON.parse(localStorage.getItem('simpleUsersList'));
-  itemResource = new DataTableResource(this.simpleUsersList);
-  itemResource1 = this.simpleUsersList;
+  // itemResource = new DataTableResource(this.simpleUsersList);
+  itemResource = this.simpleUsersList;
   items = [];
   itemCount = 0;
 
   constructor() {
     // this.rowColors = this.rowColors.bind(this);
 
-    this.itemResource.count().then(count => this.itemCount = count);
+    // this.itemResource.count().then(count => this.itemCount = count);
   }
 
   ngOnInit(): void {
   }
 
   reloadItems(params) {
-    this.itemResource.query(params).then(items => this.items = items);
+    // this.itemResource.query(params).then(items => this.items = items);
   }
 
   rowClick(itemId) {
-    // localStorage.setItem('selectedUserID', event.row.item.id);
     localStorage.setItem('selectedUserID', itemId);
-
     RatingsTableComponent.updateUserStatus.next(true);
     RatingsEndorsementsComponent.updateUserStatus.next(true);
     RatingsWExpireComponent.updateUserStatus.next(true);

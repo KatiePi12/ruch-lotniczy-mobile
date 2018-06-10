@@ -1,30 +1,27 @@
-<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">
-  <data-table id="ratingsTable"
-              headerTitle="Uprawnienia Językowe"
-              [items]="items"
-              [itemCount]="itemCount"
-              (reload)="reloadItems($event)"
-              [pagination]="false"
-
+<div>
+  <p style="font-size: 22px;"> Uprawnienia Językowe </p>
+  <table style="font-size: 18px;"
+         datatable id="ratingsTable"
   >
-    <data-table-column
-      [property]="'language'"
-      [header]="'Rodzaj'">
-    </data-table-column>
-    <data-table-column
-      [property]="'level'"
-      [header]="'Poziom'">
-    </data-table-column>
-    <data-table-column
-      [property]="'expireDate'"
-      [header]="'Ważne do'">
-      <ng-template #dataTableCell let-item="item">
-        <span>{{item.expireDate | date:'dd/MM/yyyy'}}</span>
-      </ng-template>
-    </data-table-column>
-    <data-table-column
-      property="legalBasis"
-      header="Podstawa">
-    </data-table-column>
-  </data-table>
+    <tr>
+      <ion-slides>
+        <ion-slide>
+          <th>Rodzaj</th>
+          <th>Poziom</th>
+          <th>Ważne do</th>
+    <tr *ngFor="let item of itemResource" (click)="rowClick(item.id)">
+      <td>{{ item.language }}</td>
+      <td>{{ item.level }}</td>
+      <td>{{ item.expireDate | date:'dd/MM/yyyy'}}</td>
+    </tr>
+    </ion-slide>
+    <ion-slide>
+      <th>Podstawa</th>
+      <tr *ngFor="let person of itemResource">
+        <td>{{ person.legalBasis }}</td>
+      </tr>
+    </ion-slide>
+    </ion-slides>
+    </tr>
+  </table>
 </div>
