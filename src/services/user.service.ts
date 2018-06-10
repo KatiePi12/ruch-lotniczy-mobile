@@ -11,25 +11,21 @@ export class UserService {
   }
 
   public getSimpleUsers() {
-    // const currentUser: UserAuthResponse = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser: UserAuthResponse = JSON.parse(localStorage.getItem('currentUser'));
     const url = this.BASE_URL + '/users';
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Bearer', currentUser.token);
-    headers.append('Bearer',     "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6Ymlnbmlldy5zYWwifQ.WK3yOi5vwRXeP5cPIK7pKQwCt55KUrFozBLniwZSQuiehAAjYc1WsMPIBS7WZkMDGJCPNrHT5uddX2sV-0FApw"
-    )
+    headers.append('Bearer', currentUser.token)
     return this.http.get(url, {headers: headers})
       .map(response => response.json());
   }
 
   public getUserById(userId: string) {
-    // const currentUser: UserAuthResponse = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser: UserAuthResponse = JSON.parse(localStorage.getItem('currentUser'));
     const url = this.BASE_URL + '/users/' + userId;
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // headers.append('Bearer', currentUser.token);
-    headers.append('Bearer',     "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6Ymlnbmlldy5zYWwifQ.WK3yOi5vwRXeP5cPIK7pKQwCt55KUrFozBLniwZSQuiehAAjYc1WsMPIBS7WZkMDGJCPNrHT5uddX2sV-0FApw"
-    );
+    headers.append('Bearer', currentUser.token);
     return this.http.get(url, {headers: headers})
       .map(response => response.json());
   }
