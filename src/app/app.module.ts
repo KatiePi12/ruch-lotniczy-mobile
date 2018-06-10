@@ -4,8 +4,8 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { Calendar } from '../pages/calendar/calendar';
-import { HomePage } from '../pages/home/home-dw.component';
-import { TabsPage } from '../pages/tabs/tabs';
+import { HomePageDW } from '../pages/home-dw/home-dw.component';
+import { TabsPageDW } from '../pages/tab-dw/tabs-dw';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,18 +20,24 @@ import {RatingsTableComponent} from "../pages/tables/ratings-table/ratings-table
 import {RatingsEndorsementsComponent} from "../pages/tables/ratings-endorsements/ratings-endorsements.component";
 import {RatingsWExpireComponent} from "../pages/tables/ratings-wexpire/ratings-wexpire.component";
 import {RatingsLanguageComponent} from "../pages/tables/ratings-language/ratings-language.component";
+import {LoginComponent} from "../pages/login/login.component";
+import {HomeComponent} from "../pages/home/home.component";
+import {TabsPageKont} from "../pages/tab-kont/tabs-kont";
 
 @NgModule({
   declarations: [
     MyApp,
+    LoginComponent,
     Calendar,
-    HomePage,
-    TabsPage,
+    HomePageDW,
+    TabsPageDW,
+    TabsPageKont,
     UserSelectionTableComponent,
     RatingsTableComponent,
     RatingsEndorsementsComponent,
     RatingsWExpireComponent,
-    RatingsLanguageComponent
+    RatingsLanguageComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -43,8 +49,11 @@ import {RatingsLanguageComponent} from "../pages/tables/ratings-language/ratings
   entryComponents: [
     MyApp,
     Calendar,
-    HomePage,
-    TabsPage
+    LoginComponent,
+    HomeComponent,
+    HomePageDW,
+    TabsPageDW,
+    TabsPageKont
   ],
   providers: [
     StatusBar,

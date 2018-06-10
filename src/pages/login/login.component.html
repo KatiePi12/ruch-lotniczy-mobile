@@ -1,0 +1,19 @@
+<body>
+<div *ngIf="loginErrorMessage" class="alert alert-danger show" role="alert">
+  {{loginErrorMessage}}
+</div>
+<div class="container" id="logincontainer">
+  <form>
+    <form class="form-inline">
+      <label><i class="fa fa-user fa-2x" aria-hidden="true" style="padding-right: 14px"></i></label>
+      <input [(ngModel)]="userCredentials.login" name="login" type="text" class="form-control form-control-lg loginform" id="inputEmail3" placeholder="login" (keydown)="keyDownFunction($event)">
+    </form>
+    <form class="form-inline">
+      <label><i class="fa fa-unlock fa-2x" aria-hidden="true" style="padding-right: 7px"></i></label>
+      <input [(ngModel)]="userCredentials.password" name="password" type="password" class="form-control form-control-lg loginform" id="inputPassword3" placeholder="hasło" (keydown)="keyDownFunction($event)">
+    </form>
+  </form>
+  <button class="btn btn-outline-primary btn-block" id="loginbutton" (click)="submit()">Zaloguj</button>
+</div>
+</body>
+

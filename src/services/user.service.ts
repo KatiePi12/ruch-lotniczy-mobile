@@ -16,7 +16,7 @@ export class UserService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     // headers.append('Bearer', currentUser.token);
-    headers.append('Bearer',     "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6Ymlnbmlldy5zYWwifQ.Vt-8LJAdUgKgeEljq4GPs8visrwuzfsT1cWIeK4MDovbvUXpYvifvjgIS9RPiHeUaE9PvZ0nWUznYimHhbnSuw"
+    headers.append('Bearer',     "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6Ymlnbmlldy5zYWwifQ.WK3yOi5vwRXeP5cPIK7pKQwCt55KUrFozBLniwZSQuiehAAjYc1WsMPIBS7WZkMDGJCPNrHT5uddX2sV-0FApw"
     )
     return this.http.get(url, {headers: headers})
       .map(response => response.json());
@@ -28,7 +28,7 @@ export class UserService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     // headers.append('Bearer', currentUser.token);
-    headers.append('Bearer',     "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6Ymlnbmlldy5zYWwifQ.Vt-8LJAdUgKgeEljq4GPs8visrwuzfsT1cWIeK4MDovbvUXpYvifvjgIS9RPiHeUaE9PvZ0nWUznYimHhbnSuw"
+    headers.append('Bearer',     "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6Ymlnbmlldy5zYWwifQ.WK3yOi5vwRXeP5cPIK7pKQwCt55KUrFozBLniwZSQuiehAAjYc1WsMPIBS7WZkMDGJCPNrHT5uddX2sV-0FApw"
     );
     return this.http.get(url, {headers: headers})
       .map(response => response.json());

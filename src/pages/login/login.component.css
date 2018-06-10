@@ -1,0 +1,41 @@
+body {
+  height:100vh;
+  background: url(../../../assets/loginbackground.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#logincontainer{
+  color: white;
+  background-color: rgba(0,0,0,0.6);
+  position: absolute;
+  top: calc(50% - 75px);
+  left: calc(50vw - 160px);
+  width: 320px;
+  padding: 10px;
+  z-index: 2;
+}
+
+.loginform {
+  color: white;
+  background-color: transparent !important;
+}
+.loginform:hover{
+  border-color: rgba(46,100,242,0.4);
+}
+.loginform:focus{
+  border-color: rgba(46,100,242,0.8);
+}
+
+#loginbutton {
+  margin-top: 10px;
+  color: white;
+  border-color: rgba(46,100,242,0.4);
+}
+#loginbutton:hover{
+  background-color: rgba(46,100,242,0.4);
+}
+
+

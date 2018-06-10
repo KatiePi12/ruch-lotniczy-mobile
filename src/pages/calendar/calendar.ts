@@ -6,9 +6,5 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'calendar.html'
 })
 export class Calendar {
-
-  constructor(public navCtrl: NavController) {
-
-  }
-
+  constructor(public navCtrl: NavController) {}
 }

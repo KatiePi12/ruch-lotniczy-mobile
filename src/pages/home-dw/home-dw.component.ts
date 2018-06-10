@@ -19,7 +19,7 @@ interface OnInit {
   // styleUrls: ['./home-dw.component.scss']
 })
 
-export class HomePage implements OnInit {
+export class HomePageDW implements OnInit {
   public  NOW_PLUS_THREE_MONTHS = new Date(Date.now() + 7889231490);
   public  CURRENT_TIME: Date = new Date(Date.now());
   private _userData: User;
@@ -161,5 +161,7 @@ export class HomePage implements OnInit {
   set allUsersList(value: SimpleUser[]) {
     this._allUsersList = value;
   }
+
+
 }
 
