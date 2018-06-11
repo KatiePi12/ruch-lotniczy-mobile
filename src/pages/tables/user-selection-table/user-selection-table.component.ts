@@ -20,7 +20,6 @@ export class UserSelectionTableComponent implements OnInit {
   itemResource = this.simpleUsersList;
   items = [];
   itemCount = 0;
-  public buttonClicked: boolean = false; //Whatever you want to initialise it as
 
   constructor() {
     // this.rowColors = this.rowColors.bind(this);
@@ -29,11 +28,6 @@ export class UserSelectionTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  public onButtonClick() {
-
-    this.buttonClicked = !this.buttonClicked;
   }
 
   reloadItems(params) {
