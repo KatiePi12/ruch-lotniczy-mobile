@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HomePageDW } from '../home-dw/home-dw.component';
 import {NavController} from "ionic-angular";
 import {HomeComponent} from "../home/home.component";
+import { Calendar } from '../calendar/calendar';
 
 @Component({
   templateUrl: 'tabs-kont.html'
@@ -9,6 +10,7 @@ import {HomeComponent} from "../home/home.component";
 export class TabsPageKont {
 
   home = HomePageDW;
+  calendar = Calendar;
 
   constructor(public navCtrl: NavController) {}
 

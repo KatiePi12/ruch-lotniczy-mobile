@@ -124,14 +124,14 @@
     (eventTimesChanged)="eventTimesChanged($event)">
   </mwl-calendar-day-view>
   <div *ngSwitchCase="'month'">
-    <!-- <div *ngIf="isEditable">
-      <select class="form-control" [(ngModel)]="userToAddNewEvent" required
+    <div *ngIf="isEditable">
+      <!-- <select class="form-control" [(ngModel)]="userToAddNewEvent" required
               style="display: inline-block; width: 200px;">
         <option *ngFor="let user of usersList" [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
       </select> -->
       <!-- <button class="btn btn-success" (click)="addEvent()">Dodaj dyzur</button> -->
       <button class="btn btn-warning" (click)="showOvertimeSummary()">Pokaż nadgodziny</button>
-    <!-- </div> -->
+    </div>
   </div>
 </div>
 <!-- <button *ngIf="isEditable" class="btn btn-success centeredButton" style="margin-top: 50px"

@@ -37,8 +37,8 @@ export class HomePageDW implements OnInit {
   constructor(private userService: UserService, public navCtrl: NavController) { }
 
   ngOnInit() {
-    // this.userService.getUserById(this.userService.getCurrentUserId())
-    this.userService.getUserById("0015")
+    this.userService.getUserById(this.userService.getCurrentUserId())
+    //this.userService.getUserById("0015")
       .subscribe(
         (success) => {
           this._userData = success;
@@ -53,15 +53,18 @@ export class HomePageDW implements OnInit {
         }
       );
 
-    this.userService.getSimpleUsers().subscribe(
-      (success) => {
-        this._allUsersList = success;
-        localStorage.setItem('simpleUsersList', JSON.stringify(success));
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser.systemRole === 'SZEF_LOSRL') {
+      this.userService.getSimpleUsers().subscribe(
+        (success) => {
+          this._allUsersList = success;
+          localStorage.setItem('simpleUsersList', JSON.stringify(success));
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   public getSelectedUserData() {
