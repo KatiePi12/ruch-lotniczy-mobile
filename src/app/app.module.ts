@@ -31,6 +31,7 @@ import {CalendarModule} from "angular-calendar";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import localePl from '@angular/common/locales/pl';
 import {registerLocaleData} from "@angular/common";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localePl);
 
@@ -59,7 +60,8 @@ registerLocaleData(localePl);
     HttpModule,
     DataTableModule,
     NgbModule.forRoot(),
-    CalendarModule.forRoot()
+    CalendarModule.forRoot(),
+    BrowserAnimationsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

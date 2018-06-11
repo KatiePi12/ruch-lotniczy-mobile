@@ -1,20 +1,19 @@
-<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">
+<div>
   <data-table id="usersTable"
               headerTitle="Personel "
               [items]="items"
               [itemCount]="itemCount"
               [pagination]="false"
               (reload)="reloadItems($event)"
+              [indexColumn]="false"
   >
     <data-table-column
       [property]="'id'"
-      [header]="'ID'"
-      width="100px">
+      [header]="'ID'">
     </data-table-column>
     <data-table-column
       [property]="'firstName'"
-      [header]="'Imię'"
-      width="150px">
+      [header]="'Imię'">
     </data-table-column>
     <data-table-column
       [property]="'lastName'"

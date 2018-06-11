@@ -27,8 +27,10 @@
     </button>
   </div>
   <div class="modal-body">
-    <div>
-      <app-summary-overtime [schedule]="schedule" [currentEvents]="events"></app-summary-overtime>
+    <div class="row">
+      <div class="col-sm-12">
+          <app-summary-overtime [schedule]="schedule" [currentEvents]="events"></app-summary-overtime>
+      </div>
     </div>
   </div>
   <div class="modal-footer">
@@ -98,7 +100,6 @@
     *ngSwitchCase="'month'"
     [viewDate]="viewDate"
     [events]="events"
-    [refresh]="refresh"
     [activeDayIsOpen]="activeDayIsOpen"
     [locale]="locale"
     [weekStartsOn]="weekStartsOn"
@@ -110,7 +111,6 @@
     *ngSwitchCase="'week'"
     [viewDate]="viewDate"
     [events]="events"
-    [refresh]="refresh"
     [locale]="locale"
     [weekStartsOn]="weekStartsOn"
     (eventTimesChanged)="eventTimesChanged($event)">
@@ -119,22 +119,21 @@
     *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="events"
-    [refresh]="refresh"
     [locale]="locale"
     [hourSegments]="1"
     (eventTimesChanged)="eventTimesChanged($event)">
   </mwl-calendar-day-view>
   <div *ngSwitchCase="'month'">
-    <div *ngIf="isEditable">
+    <!-- <div *ngIf="isEditable">
       <select class="form-control" [(ngModel)]="userToAddNewEvent" required
               style="display: inline-block; width: 200px;">
         <option *ngFor="let user of usersList" [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
-      </select>
-      <button class="btn btn-success" (click)="addEvent()">Dodaj dyzur</button>
+      </select> -->
+      <!-- <button class="btn btn-success" (click)="addEvent()">Dodaj dyzur</button> -->
       <button class="btn btn-warning" (click)="showOvertimeSummary()">Pokaż nadgodziny</button>
-    </div>
+    <!-- </div> -->
   </div>
 </div>
-<button *ngIf="isEditable" class="btn btn-success centeredButton" style="margin-top: 50px"
+<!-- <button *ngIf="isEditable" class="btn btn-success centeredButton" style="margin-top: 50px"
         (click)="saveEditedSchedule()">Zapisz
-</button>
+</button> -->
