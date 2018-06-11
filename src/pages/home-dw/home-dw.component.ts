@@ -24,36 +24,17 @@ export class HomePageDW implements OnInit {
   public  CURRENT_TIME: Date = new Date(Date.now());
   private _userData: User;
   private _allUsersList: SimpleUser[];
+  private personelDataButtonClicked: boolean = false;
+  private personalDataButtonClicked: boolean = false;
+  private permissionsDataButtonClicked: boolean = false;
+  private ratingsDataButtonClicked: boolean = false;
+  private RatingsEndorsementsDataButtonClicked: boolean = false;
+  private RatingsWexpireDataButtonClicked: boolean = false;
+  private RatingsLanguageDataButtonClicked: boolean = false;
+
+
 
   constructor(private userService: UserService, public navCtrl: NavController) { }
-
-  //to mock data
-  // ngOnInit() {
-  //   console.log("Works");
-  //   //musi byc new user bo nie dziala
-  //   this._userData = new User();
-  //   this._userData.id="testtest";
-  //   this._userData.firstName="test";
-  //   this._userData.lastName="test";
-  //   this._userData.password="test";
-  //   this._userData.systemRole="test";
-  //   this._userData.role="test";
-  //   this._userData.birthDate="test";
-  //   this._userData.birthPlace="test";
-  //   this._userData.available="test";
-  //   this._userData.licenceId="test";
-  //   this._userData.licenceType="test";
-  //   this._userData.licenceComments="test";
-  //   this._userData.militaryRank="test";
-  //   this._userData.pesel="test";
-  //   this._userData.fathersName="test";
-  //   this._userData.entryDate="test";
-  //   this._userData.milBaseNr="test";
-  //   this._userData.milBaseName="test";
-  //   this._userData.nis="test";
-  //   this._userData.licenceExpireDate= new Date(2018, 11, 24, 10, 33, 30, 0);
-  //   this._userData.medicalExpireDate= new Date(2017, 11, 24, 10, 33, 30, 0);
-  // }
 
   ngOnInit() {
     // this.userService.getUserById(this.userService.getCurrentUserId())
@@ -146,6 +127,34 @@ export class HomePageDW implements OnInit {
     return new Date(minValue);
   }
 
+  public onPersonelDataButtonClick() {
+    this.personelDataButtonClicked = !this.personelDataButtonClicked;
+  }
+
+  public onPersonalDataButtonClick() {
+    this.personalDataButtonClicked = !this.personalDataButtonClicked;
+  }
+
+  public onPermissionsDataButtonClick() {
+    this.permissionsDataButtonClicked = !this.permissionsDataButtonClicked;
+  }
+
+  public onRatingsDataButtonClick() {
+    this.ratingsDataButtonClicked = !this.ratingsDataButtonClicked;
+  }
+
+  public onRatingsEndorsementsDataButtonClick() {
+    this.RatingsEndorsementsDataButtonClicked = !this.RatingsEndorsementsDataButtonClicked;
+  }
+
+  public onRatingsWexpireDataButtonClick() {
+    this.RatingsWexpireDataButtonClicked = !this.RatingsWexpireDataButtonClicked;
+  }
+
+  public onRatingsLanguageDataButtonClick() {
+    this.RatingsLanguageDataButtonClicked = !this.RatingsLanguageDataButtonClicked;
+  }
+
   get userData(): User {
     return this._userData;
   }
@@ -161,7 +170,5 @@ export class HomePageDW implements OnInit {
   set allUsersList(value: SimpleUser[]) {
     this._allUsersList = value;
   }
-
-
 }
 

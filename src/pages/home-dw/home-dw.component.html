@@ -5,131 +5,137 @@
 </ion-header>
 
 <ion-content padding>
+  <ng-template #no_data>
+    <p style="color: red;"> BRAK DANYCH </p>
+  </ng-template>
   <div *ngIf="userData">
-    <!--<ion-row class="jumbotron" style="width: 1100px">-->
       <div *ngIf="allUsersList">
-        <app-user-selection-table (userSelectionEvent)="getSelectedUserData()"></app-user-selection-table>
+        <button ion-button full round (click)="onPersonelDataButtonClick()">PERSONEL</button>
+        <app-user-selection-table *ngIf="personelDataButtonClicked" (userSelectionEvent)="getSelectedUserData()"></app-user-selection-table>
       </div>
   </div>
-  <div *ngIf="userData" class="container">
-    <div class="jumbotron" style="width: 1100px">
-      <div class="row " style="padding-bottom: 30px">
-        <h1 *ngIf="userData" style="color: #1f37b8">{{userData.firstName}} {{userData.lastName}}
-          <!--({{userData.airport.airportICAO}})</h1>-->
-        </h1>
-      </div>
-      <div class="row" style="padding-bottom: 20px">
-        <div class="col">
-          <h4>ID KONTROLERA:</h4>
-          <p *ngIf="userData" class="persData">{{userData.id}}</p>
+    <div *ngIf="userData">
+      <button ion-button full round (click)="onPersonalDataButtonClick()">DANE OSOBOWE</button>
+      <div *ngIf="personalDataButtonClicked">
+        <div class="jumbotron">
+          <div class="row " style="padding-bottom: 20px">
+            <div class="col">
+              <h1 *ngIf="userData" style="color: #1f37b8">{{userData.firstName}} {{userData.lastName}}
+              </h1>
+            </div>
+          </div>
+          <div class="row" style="padding-bottom: 20px">
+            <div class="col">
+              <h4>ID KONTROLERA:</h4>
+              <p *ngIf="userData" class="persData">{{userData.id}}</p>
+            </div>
+          </div>
+          <div class="row" style="padding-bottom: 20px">
+            <div class="col">
+              <h4>PESEL:</h4>
+              <p *ngIf="userData.pesel; else no_data" class="persData">{{userData.pesel}}</p>
+            </div>
+          </div>
+          <div class="row" style="padding-bottom: 20px">
+            <div class="col">
+              <h4>IMIĘ OJCA:</h4>
+              <p *ngIf="userData.fathersName; else no_data" class="persData">{{userData.fathersName}}</p>
+            </div>
+          </div>
+          <div class="row" style="padding-bottom: 20px">
+            <div class="col">
+              <h4>DATA URODZENIA:</h4>
+              <p *ngIf="userData.birthDate; else no_data" class="persData">{{userData.birthDate}}</p>
+            </div>
+          </div>
+          <div class="row" style="padding-bottom: 20px">
+            <div class="col">
+              <h4>MIEJSCE URODZENIA:</h4>
+              <p *ngIf="userData.birthPlace; else no_data" class="persData">{{userData.birthPlace.toUpperCase()}}</p>
+            </div>
+          </div>
+          <div class="row" style="padding-bottom: 20px">
+            <div class="col">
+              <h4>DATA WSTĄPIENIA:</h4>
+              <p *ngIf="userData.entryDate; else no_data" class="persData">{{userData.entryDate}}</p>
+            </div>
+          </div>
+          <div class="row" style="padding-bottom: 20px">
+            <div class="col">
+              <h4>NUMER JW:</h4>
+              <p *ngIf="userData.milBaseNr; else no_data" class="persData">{{userData.milBaseNr}}</p>
+            </div>
+          </div>
+          <div class="row" style="padding-bottom: 20px">
+            <div class="col">
+              <h4>NAZWA JW:</h4>
+              <p *ngIf="userData.milBaseName; else no_data" class="persData">{{userData.milBaseName}}</p>
+            </div>
+          </div>
+          <div class="row" style="padding-bottom: 20px">
+            <div class="col">
+              <h4>NIS:</h4>
+              <p *ngIf="userData.nis; else no_data" class="persData">{{userData.nis}}</p>
+            </div>
+          </div>
+          <div class="row" style="padding-bottom: 20px">
+            <div class="col">
+              <h4>STANOWISKO:</h4>
+              <p *ngIf="userData.role; else no_data" class="persData">{{userData.role}}</p>
+            </div>
+          </div>
+          <div class="row" style="padding-bottom: 20px">
+          <div class="col">
+            <h4>KADENCJA NA STANOWISKU:</h4>
+            <p *ngIf="userData.officeTerm; else no_data" class="persData">{{userData.officeTerm | date: 'dd/MM/yyyy'}}</p>
+          </div>
+          </div>
+          <div style="margin-top:15px">
+            <ion-slides>
+              <ion-slide>
+                <img *ngIf="userData.officeTerm > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
+                <img *ngIf="userData.officeTerm > CURRENT_TIME && userData.officeTerm < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
+                <img *ngIf="userData.officeTerm < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
+                <p >Kadencja na stanowisku</p>
+                <p>{{userData.officeTerm | date: 'dd/MM/yyyy'}}</p>
+              </ion-slide>
+              <ion-slide>
+                <img *ngIf="userData.licenceExpireDate > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
+                <img *ngIf="userData.licenceExpireDate > CURRENT_TIME && userData.licenceExpireDate < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
+                <img *ngIf="userData.licenceExpireDate < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
+                <p >Ważność licencji</p>
+                <p>{{userData.licenceExpireDate | date: 'dd/MM/yyyy'}}</p>
+              </ion-slide>
+              <ion-slide>
+                <img *ngIf="getMinValueOfExpireDate() > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
+                <img *ngIf="getMinValueOfExpireDate() > CURRENT_TIME && getMinValueOfExpireDate() < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
+                <img *ngIf="getMinValueOfExpireDate() < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
+                <p >Uprawnienia z datą ważności</p>
+                <p>{{getMinValueOfExpireDate() | date: 'dd/MM/yyyy'}}</p>
+              </ion-slide>
+              <ion-slide>
+                <img *ngIf="getMinValueOfLanguage() > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
+                <img *ngIf="getMinValueOfLanguage() > CURRENT_TIME && getMinValueOfLanguage() < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
+                <img *ngIf="getMinValueOfLanguage() < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
+                <p >Uprawnienia językowe</p>
+                <p>{{getMinValueOfLanguage() | date: 'dd/MM/yyyy'}}</p>
+              </ion-slide>
+              <ion-slide>
+                <img *ngIf="getMinValueOfOtp() > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
+                <img *ngIf="getMinValueOfOtp() > CURRENT_TIME && getMinValueOfOtp() < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
+                <img *ngIf="getMinValueOfOtp() < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
+                <p >OTP</p>
+                <p>{{getMinValueOfOtp() | date: 'dd/MM/yyyy'}}</p>
+              </ion-slide>
+            </ion-slides>
+          </div>
         </div>
       </div>
-      <div class="row" style="padding-bottom: 20px">
-        <div class="col">
-          <h4>PESEL:</h4>
-          <p *ngIf="userData" class="persData">{{userData.pesel}}</p>
-        </div>
-      </div>
-      <div class="row" style="padding-bottom: 20px">
-        <div class="col">
-          <h4>IMIĘ OJCA:</h4>
-          <p *ngIf="userData" class="persData">{{userData.fathersName}}</p>
-        </div>
-      </div>
-      <div class="row" style="padding-bottom: 20px">
-        <div class="col">
-          <h4>DATA URODZENIA:</h4>
-          <p *ngIf="userData" class="persData">{{userData.birthDate}}</p>
-        </div>
-      </div>
-      <div class="row" style="padding-bottom: 20px">
-        <div class="col">
-          <h4>MIEJSCE URODZENIA:</h4>
-          <p *ngIf="userData" class="persData">{{userData.birthPlace.toUpperCase()}}</p>
-        </div>
-      </div>
-      <div class="row" style="padding-bottom: 20px">
-        <div class="col">
-          <h4>DATA WSTĄPIENIA:</h4>
-          <p *ngIf="userData" class="persData">{{userData.entryDate}}</p>
-        </div>
-      </div>
-      <div class="row" style="padding-bottom: 20px">
-        <div class="col">
-          <h4>NUMER JW:</h4>
-          <p *ngIf="userData" class="persData">{{userData.milBaseNr}}</p>
-        </div>
-      </div>
-      <div class="row" style="padding-bottom: 20px">
-        <div class="col">
-          <h4>NAZWA JW:</h4>
-          <p *ngIf="userData" class="persData">{{userData.milBaseName}}</p>
-        </div>
-      </div>
-      <div class="row" style="padding-bottom: 20px">
-        <div class="col">
-          <h4>NIS:</h4>
-          <p *ngIf="userData" class="persData">{{userData.nis}}</p>
-        </div>
-      </div>
-      <div class="row" style="padding-bottom: 20px">
-        <div class="col">
-          <h4>STANOWISKO:</h4>
-          <p *ngIf="userData" class="persData">{{userData.role}}</p>
-        </div>
-      </div>
-      <div class="row" style="padding-bottom: 20px">
-      <div class="col">
-        <h4>KADENCJA NA STANOWISKU:</h4>
-        <p *ngIf="userData" class="persData">{{userData.officeTerm | date: 'dd/MM/yyyy'}}</p>
-      </div>
-      </div>
-    </div>
   </div>
-  <div *ngIf="userData" class="container ">
-    <ion-slides>
-      <ion-slide>
-        <img *ngIf="userData.officeTerm > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
-        <img *ngIf="userData.officeTerm > CURRENT_TIME && userData.officeTerm < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
-        <img *ngIf="userData.officeTerm < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
-        <p >Kadencja na stanowisku</p>
-        <p>{{userData.officeTerm | date: 'dd/MM/yyyy'}}</p>
-      </ion-slide>
-      <ion-slide>
-        <img *ngIf="userData.licenceExpireDate > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
-        <img *ngIf="userData.licenceExpireDate > CURRENT_TIME && userData.licenceExpireDate < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
-        <img *ngIf="userData.licenceExpireDate < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
-        <p >Ważność licencji</p>
-        <p>{{userData.licenceExpireDate | date: 'dd/MM/yyyy'}}</p>
-      </ion-slide>
-      <ion-slide>
-        <img *ngIf="getMinValueOfExpireDate() > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
-        <img *ngIf="getMinValueOfExpireDate() > CURRENT_TIME && getMinValueOfExpireDate() < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
-        <img *ngIf="getMinValueOfExpireDate() < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
-        <p >Uprawnienia z datą ważności</p>
-        <p>{{getMinValueOfExpireDate() | date: 'dd/MM/yyyy'}}</p>
-      </ion-slide>
-      <ion-slide>
-        <img *ngIf="getMinValueOfLanguage() > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
-        <img *ngIf="getMinValueOfLanguage() > CURRENT_TIME && getMinValueOfLanguage() < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
-        <img *ngIf="getMinValueOfLanguage() < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
-        <p >Uprawnienia językowe</p>
-        <p>{{getMinValueOfLanguage() | date: 'dd/MM/yyyy'}}</p>
-      </ion-slide>
-      <ion-slide>
-        <img *ngIf="getMinValueOfOtp() > NOW_PLUS_THREE_MONTHS" src="assets/greenImage.png" class="image64"/>
-        <img *ngIf="getMinValueOfOtp() > CURRENT_TIME && getMinValueOfOtp() < NOW_PLUS_THREE_MONTHS" src="assets/yellowImage.png" class="image64"/>
-        <img *ngIf="getMinValueOfOtp() < CURRENT_TIME" src="assets/redImage.png" class="image64"/>
-        <p >OTP</p>
-        <p>{{getMinValueOfOtp() | date: 'dd/MM/yyyy'}}</p>
-      </ion-slide>
-    </ion-slides>
-  </div>
-  <ion-col *ngIf="userData" class="container">
-    <!--<ion-row class="jumbotron" style="width: 1100px">-->
-    <ion-row>
-      <h3 style="padding-bottom: 20px">UPRAWNIENIA KONTROLERA RUCHU LOTNICZEGO</h3>
-      <ion-slides>
+  <div *ngIf="userData">
+      <button ion-button full round (click)="onPermissionsDataButtonClick()">UPRAWNIENIA KONTROLERA RUCHU LOTNICZEGO</button>
+      <div *ngIf="permissionsDataButtonClicked">
+        <ion-slides>
         <ion-slide>
           <ion-col>
             <h4>Numer licencji: </h4>
@@ -155,10 +161,22 @@
           </ion-col>
         </ion-slide>
       </ion-slides>
-      <app-ratings-table></app-ratings-table>
-      <app-ratings-endorsements></app-ratings-endorsements>
-      <app-ratings-wexpire></app-ratings-wexpire>
-      <app-ratings-language></app-ratings-language>
-    </ion-row>
-  </ion-col>
+      </div>
+      <button ion-button full round (click)="onRatingsDataButtonClick()">UPRAWNIENIA</button>
+      <div *ngIf="ratingsDataButtonClicked">
+        <app-ratings-table></app-ratings-table>
+      </div>
+      <button ion-button full round (click)="onRatingsEndorsementsDataButtonClick()">UPRAWNIENIA UZUPEŁNIAJĄCE</button>
+      <div *ngIf="RatingsEndorsementsDataButtonClicked">
+        <app-ratings-endorsements></app-ratings-endorsements>
+      </div>
+      <button ion-button full round (click)="onRatingsWexpireDataButtonClick()">UPRAWNIENIA Z DATĄ WAŻNOŚCI</button>
+      <div *ngIf="RatingsWexpireDataButtonClicked">
+        <app-ratings-wexpire></app-ratings-wexpire>
+      </div>
+      <button ion-button full round (click)="onRatingsLanguageDataButtonClick()">UPRAWNIENIA JĘZYKOWE</button>
+      <div *ngIf="RatingsLanguageDataButtonClicked">
+        <app-ratings-language></app-ratings-language>
+      </div>
+  </div>
 </ion-content>

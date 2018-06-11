@@ -1,6 +1,5 @@
-<div>
-  <button ion-button full round (click)="onButtonClick()">Personel</button>
-    <table *ngIf="buttonClicked"
+
+    <table
            class="table table-striped"
            datatable id="usersTable"
            (reload)="reloadItems($event)"
@@ -30,4 +29,3 @@
         </ion-slide>
       </ion-slides>
     </table>
-</div>
