@@ -1,0 +1,49 @@
+<div *ngIf="schedules">
+  <data-table
+    [items]="items"
+    [itemCount]="itemCount"
+    (reload)="reloadItems($event)"
+    [pagination]="false"
+    [selectColumn]="false"
+    [multiSelect]="false"
+    [indexColumn]="true"
+
+  >
+    <data-table-column
+      [property]="'startDate'"
+      [header]="'Początek'"
+      [sortable]="false"
+      [resizable]="false">
+      <ng-template #dataTableCell let-item="item">
+        <span>{{item.startDate | date:'dd/MM/yyyy'}}</span>
+      </ng-template>
+    </data-table-column>
+    <data-table-column
+      [property]="'endDate'"
+      [header]="'Koniec'"
+      [sortable]="false"
+      [resizable]="false">
+      <ng-template #dataTableCell let-item="item">
+        <span>{{item.endDate | date:'dd/MM/yyyy'}}</span>
+      </ng-template>
+    </data-table-column>
+    <data-table-column>
+      header="Actions">
+      <ng-template #dataTableHeader let-item="item">
+        Szczegóły
+      </ng-template>
+      <ng-template #dataTableCell let-item="item">
+        <button (click)="selectAction(item)" class="btn btn-sm btn-outline-success">Pokaż</button>
+      </ng-template>
+    </data-table-column>
+    <data-table-column *ngIf="isEditable">
+      header="Actions">
+      <ng-template #dataTableHeader let-item="item">
+        Usuń
+      </ng-template>
+      <ng-template #dataTableCell let-item="item">
+        <button (click)="deleteAction(item)" class="btn btn-sm btn-outline-danger">Usuń</button>
+      </ng-template>
+    </data-table-column>
+  </data-table>
+</div>

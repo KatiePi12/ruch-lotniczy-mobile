@@ -30,6 +30,7 @@
     "angular-4-data-table-bootstrap-4": "latest",
     "angular-calendar": "^0.21.3",
     "angular5-data-table": "latest",
+    "boostrap": "^2.0.0",
     "date-fns": "^1.29.0",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",

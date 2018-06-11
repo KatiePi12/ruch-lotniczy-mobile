@@ -1,32 +1,33 @@
-<!--<div style="margin-top: 50px; max-width: 1000px; margin-bottom: 50px;">-->
-<!--<div  style="font-size: 22px; table-layout: auto">-->
 <div>
-  <p style="font-size: 22px;"> Personel </p>
-  <table style="font-size: 18px;"
-         datatable id="usersTable"
-         (reload)="reloadItems($event)"
-  >
-    <tr>
+  <button ion-button full round (click)="onButtonClick()">Personel</button>
+    <table *ngIf="buttonClicked"
+           class="table table-striped"
+           datatable id="usersTable"
+           (reload)="reloadItems($event)"
+    >
       <ion-slides>
         <ion-slide>
-          <th>ID</th>
-          <th>First name</th>
-          <th>Last name</th>
+          <tr>
+            <th >ID</th>
+            <th >First name</th>
+            <th >Last name</th>
+            <th>Stopień</th>
+          </tr>
           <tr *ngFor="let item of itemResource" (click)="rowClick(item.id)">
             <td>{{ item.id }}</td>
             <td>{{ item.firstName }}</td>
             <td>{{ item.lastName }}</td>
+            <td>{{ item.militaryRank }}</td>
           </tr>
         </ion-slide>
         <ion-slide>
-          <th>Stopień</th>
-          <th>Stanowisko</th>
-          <tr *ngFor="let person of itemResource">
-            <td>{{ person.militaryRank }}</td>
-            <td>{{ person.role }}</td>
+          <tr>
+            <th>Stanowisko</th>
+          </tr>
+          <tr *ngFor="let item of itemResource">
+            <td>{{ item.role }}</td>
           </tr>
         </ion-slide>
       </ion-slides>
-    </tr>
-  </table>
+    </table>
 </div>

@@ -1,0 +1,140 @@
+<ng-template #modalContent let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title">Zmień kontrolera</h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <h5>Kontroler</h5>
+      <select class="form-control" [(ngModel)]="selectedUser" required>
+        <option *ngFor="let user of usersList" [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">Anuluj</button>
+    <button type="button" class="btn btn-outline-success" (click)="editEvent()">Zapisz</button>
+  </div>
+</ng-template>
+
+<ng-template #summaryModal let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title">Podsumowanie Nadgodzin</h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <app-summary-overtime [schedule]="schedule" [currentEvents]="events"></app-summary-overtime>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">Zamknij</button>
+  </div>
+</ng-template>
+
+<ng-template #deleteConfirmationModal let-close="close">
+  <div class="modal-body">
+    <div>
+      Czy na pewno chcesz usunąć?
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="deleteEvent(modalData?.event)">Usuń</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">Anuluj</button>
+  </div>
+</ng-template>
+
+<!--HEADER-->
+
+<div class="row text-center">
+  <div class="col-md-4">
+    <div class="btn-group">
+      <button class="btn btn-primary" (click)="decrement()" [disabled]="prevBtnDisabled">
+        Poprzedni
+      </button>
+      <button class="btn btn-outline-secondary" (click)="today()">
+        Obecny
+      </button>
+      <button class="btn btn-primary" (click)="increment()" [disabled]="nextBtnDisabled">
+        Następny
+      </button>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3 style="color: white">{{ viewDate | calendarDate:(view + 'ViewTitle') }}</h3>
+  </div>
+  <div class="col-md-4" style="margin-right: 0px">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary pointer"
+        (click)="view = 'month'"
+        [class.active]="view === 'month'">
+        Miesiąc
+      </div>
+      <div
+        class="btn btn-primary pointer"
+        (click)="view = 'week'"
+        [class.active]="view === 'week'">
+        Tydzień
+      </div>
+      <div
+        class="btn btn-primary pointer"
+        (click)="view = 'day'"
+        [class.active]="view === 'day'">
+        Dzień
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<!--/HEADER-->
+
+<div [ngSwitch]="view" style="width: 100%;">
+  <mwl-calendar-month-view
+    *ngSwitchCase="'month'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [activeDayIsOpen]="activeDayIsOpen"
+    [locale]="locale"
+    [weekStartsOn]="weekStartsOn"
+    (dayClicked)="dayClicked($event.day, $event.day)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+    (beforeViewRender)="beforeMonthViewRender($event)">
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view
+    *ngSwitchCase="'week'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [locale]="locale"
+    [weekStartsOn]="weekStartsOn"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view
+    *ngSwitchCase="'day'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [locale]="locale"
+    [hourSegments]="1"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-day-view>
+  <div *ngSwitchCase="'month'">
+    <div *ngIf="isEditable">
+      <select class="form-control" [(ngModel)]="userToAddNewEvent" required
+              style="display: inline-block; width: 200px;">
+        <option *ngFor="let user of usersList" [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
+      </select>
+      <button class="btn btn-success" (click)="addEvent()">Dodaj dyzur</button>
+      <button class="btn btn-warning" (click)="showOvertimeSummary()">Pokaż nadgodziny</button>
+    </div>
+  </div>
+</div>
+<button *ngIf="isEditable" class="btn btn-success centeredButton" style="margin-top: 50px"
+        (click)="saveEditedSchedule()">Zapisz
+</button>

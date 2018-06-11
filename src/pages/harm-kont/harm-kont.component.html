@@ -1,0 +1,19 @@
+<!--<html>-->
+<!--<app-navbar></app-navbar>-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div [ngSwitch]="step">
+        <div *ngSwitchCase="1">
+          <app-schedule-selection (scheduleSelectionEvent)="getSelectedScheduleData($event)"></app-schedule-selection>
+        </div>
+        <div *ngSwitchCase="2">
+          <button class="btn btn-primary centeredButton" style="margin-bottom: 15px" (click)="goBackToSelection()">Powrót
+          </button>
+          <app-show-schedule-edit [selectedSchedule]="selectedSchedule"></app-show-schedule-edit>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

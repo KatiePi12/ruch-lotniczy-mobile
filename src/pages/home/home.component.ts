@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   constructor(public navCtrl: NavController) { }
 
   ngOnInit() {
-    console.log("home compo");
     if (this.isUserLogged()) {
       const user: UserAuthResponse = JSON.parse(localStorage.getItem('currentUser'));
       // DEVELOPMENT ENVIRONMENT ONLY

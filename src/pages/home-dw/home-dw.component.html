@@ -5,15 +5,12 @@
 </ion-header>
 
 <ion-content padding>
-  <!--<div *ngIf="allUsersList" class="jumbotron" style="width: 1100px">-->
-  <ion-col *ngIf="userData" class="container">
+  <div *ngIf="userData">
     <!--<ion-row class="jumbotron" style="width: 1100px">-->
-    <ion-row>
       <div *ngIf="allUsersList">
         <app-user-selection-table (userSelectionEvent)="getSelectedUserData()"></app-user-selection-table>
       </div>
-      </ion-row>
-  </ion-col>
+  </div>
   <div *ngIf="userData" class="container">
     <div class="jumbotron" style="width: 1100px">
       <div class="row " style="padding-bottom: 30px">
@@ -162,14 +159,6 @@
       <app-ratings-endorsements></app-ratings-endorsements>
       <app-ratings-wexpire></app-ratings-wexpire>
       <app-ratings-language></app-ratings-language>
-    </ion-row>
-    <!--<div class="jumbotron" style="width: 1100px;">-->
-    <ion-row>
-      <ion-col style="text-align: center;">
-        <button ion-button round center routerLink='/homeDWEdit'>
-          Edytuj
-        </button>
-      </ion-col>
     </ion-row>
   </ion-col>
 </ion-content>
