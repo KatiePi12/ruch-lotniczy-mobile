@@ -5,8 +5,8 @@ import {User} from '../models/user';
 
 @Injectable()
 export class UserService {
- // BASE_URL = 'https://ruchlotniczy-app.unicloud.pl/';
-  BASE_URL = 'http://localhost:8080';
+  BASE_URL = 'https://ruchlotniczy-app.unicloud.pl/';
+  //BASE_URL = 'http://localhost:8080';
   constructor(private http: Http) {
   }
 
