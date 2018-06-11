@@ -1,27 +1,29 @@
 <div>
-  <!--<p> Uprawnienia Językowe </p>-->
+<!--<p> Uprawnienia Językowe </p>-->
   <table class="table table-striped"
-         datatable id="ratingsTable"
+  datatable id="ratingsLangTable"
   >
-    <tr>
-      <ion-slides>
-        <ion-slide>
+    <ion-slides>
+      <ion-slide>
+        <tr>
           <th>Rodzaj</th>
           <th>Poziom</th>
           <th>Ważne do</th>
-    <tr *ngFor="let item of itemResource">
-      <td>{{ item.language }}</td>
-      <td>{{ item.level }}</td>
-      <td>{{ item.expireDate | date:'dd/MM/yyyy'}}</td>
-    </tr>
-    </ion-slide>
-    <ion-slide>
-      <th>Podstawa</th>
-      <tr *ngFor="let person of itemResource">
-        <td>{{ person.legalBasis }}</td>
-      </tr>
-    </ion-slide>
+        </tr>
+        <tr *ngFor="let item of itemResource">
+          <td>{{ item.language }}</td>
+          <td>{{ item.level }}</td>
+          <td>{{ item.expireDate | date:'dd/MM/yyyy'}}</td>
+        </tr>
+      </ion-slide>
+      <ion-slide>
+        <tr>
+          <th>Podstawa</th>
+        </tr>
+        <tr *ngFor="let person of itemResource">
+          <td>{{ person.legalBasis }}</td>
+        </tr>
+      </ion-slide>
     </ion-slides>
-    </tr>
   </table>
 </div>

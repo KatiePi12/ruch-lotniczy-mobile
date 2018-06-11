@@ -10,12 +10,12 @@
   </ng-template>
   <div *ngIf="userData">
       <div *ngIf="allUsersList">
-        <button ion-button full round (click)="onPersonelDataButtonClick()">PERSONEL</button>
+        <button ion-button full (click)="onPersonelDataButtonClick()">PERSONEL</button>
         <app-user-selection-table *ngIf="personelDataButtonClicked" (userSelectionEvent)="getSelectedUserData()"></app-user-selection-table>
       </div>
   </div>
     <div *ngIf="userData">
-      <button ion-button full round (click)="onPersonalDataButtonClick()">DANE OSOBOWE</button>
+      <button ion-button full (click)="onPersonalDataButtonClick()">DANE OSOBOWE</button>
       <div *ngIf="personalDataButtonClicked">
         <div class="jumbotron">
           <div class="row " style="padding-bottom: 20px">
@@ -133,7 +133,7 @@
       </div>
   </div>
   <div *ngIf="userData">
-      <button ion-button full round (click)="onPermissionsDataButtonClick()">UPRAWNIENIA KONTROLERA RUCHU LOTNICZEGO</button>
+      <button ion-button full (click)="onPermissionsDataButtonClick()">UPRAWNIENIA KONTROLERA RUCHU LOTNICZEGO</button>
       <div *ngIf="permissionsDataButtonClicked">
         <ion-slides>
         <ion-slide>
@@ -162,19 +162,19 @@
         </ion-slide>
       </ion-slides>
       </div>
-      <button ion-button full round (click)="onRatingsDataButtonClick()">UPRAWNIENIA</button>
+      <button ion-button full (click)="onRatingsDataButtonClick()">UPRAWNIENIA</button>
       <div *ngIf="ratingsDataButtonClicked">
         <app-ratings-table></app-ratings-table>
       </div>
-      <button ion-button full round (click)="onRatingsEndorsementsDataButtonClick()">UPRAWNIENIA UZUPEŁNIAJĄCE</button>
+      <button ion-button full (click)="onRatingsEndorsementsDataButtonClick()">UPRAWNIENIA UZUPEŁNIAJĄCE</button>
       <div *ngIf="RatingsEndorsementsDataButtonClicked">
         <app-ratings-endorsements></app-ratings-endorsements>
       </div>
-      <button ion-button full round (click)="onRatingsWexpireDataButtonClick()">UPRAWNIENIA Z DATĄ WAŻNOŚCI</button>
+      <button ion-button full (click)="onRatingsWexpireDataButtonClick()">UPRAWNIENIA Z DATĄ WAŻNOŚCI</button>
       <div *ngIf="RatingsWexpireDataButtonClicked">
         <app-ratings-wexpire></app-ratings-wexpire>
       </div>
-      <button ion-button full round (click)="onRatingsLanguageDataButtonClick()">UPRAWNIENIA JĘZYKOWE</button>
+      <button ion-button full (click)="onRatingsLanguageDataButtonClick()">UPRAWNIENIA JĘZYKOWE</button>
       <div *ngIf="RatingsLanguageDataButtonClicked">
         <app-ratings-language></app-ratings-language>
       </div>

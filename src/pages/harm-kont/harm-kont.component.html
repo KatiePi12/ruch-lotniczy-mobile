@@ -1,11 +1,8 @@
 <!--<html>-->
 <!--<app-navbar></app-navbar>-->
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
       <div [ngSwitch]="step">
-        <div *ngSwitchCase="1">
+        <div *ngSwitchCase="1" class="row">
           <app-schedule-selection (scheduleSelectionEvent)="getSelectedScheduleData($event)"></app-schedule-selection>
         </div>
         <div *ngSwitchCase="2">
@@ -14,6 +11,3 @@
           <app-show-schedule-edit [selectedSchedule]="selectedSchedule"></app-show-schedule-edit>
         </div>
       </div>
-    </div>
-  </div>
-</div>

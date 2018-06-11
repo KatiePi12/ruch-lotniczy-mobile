@@ -2,30 +2,32 @@
 <!--<div  style="font-size: 22px; table-layout: auto">-->
 <!--<div>-->
   <!--<p> Uprawnienia z datą ważności </p>-->
-  <table class="table table-striped"
-         datatable id="usersTable"
-  >
-    <tr>
-      <ion-slides>
-        <ion-slide>
-          <th>Organ</th>
-          <th>Nazwa</th>
-          <th>Ważne do</th>
-    <tr *ngFor="let item of itemResource">
-      <td>{{ item.airportICAO }}</td>
-      <td>{{ item.name }}</td>
-      <td>{{ item.expireDate | date:'dd/MM/yyyy' }}</td>
-    </tr>
+<table class="table table-striped"
+datatable id="usersWexTable"
+>
+  <ion-slides>
+    <ion-slide>
+      <tr>
+        <th>Organ</th>
+        <th>Nazwa</th>
+        <th>Ważne do</th>
+      </tr>
+      <tr *ngFor="let item of itemResource">
+        <td>{{ item.airportICAO }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.expireDate | date:'dd/MM/yyyy' }}</td>
+      </tr>
     </ion-slide>
     <ion-slide>
-      <th>Podstawa</th>
-      <th>OTP</th>
+      <tr>
+        <th>Podstawa</th>
+        <th>OTP</th>
+      </tr>
       <tr *ngFor="let person of itemResource">
         <td>{{ person.legalBasis }}</td>
         <td>{{ person.otp | date:'dd/MM/yyyy' }}</td>
       </tr>
     </ion-slide>
-    </ion-slides>
-    </tr>
-  </table>
+  </ion-slides>
+</table>
 <!--</div>-->
